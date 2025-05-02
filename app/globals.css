@@ -1,0 +1,301 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 98%;
+  --foreground: 20 14.3% 4.1%;
+  --card: 0 0% 100%;
+  --card-foreground: 20 14.3% 4.1%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 20 14.3% 4.1%;
+  --primary: 24 9.8% 10%;
+  --primary-foreground: 60 9.1% 97.8%;
+  --secondary: 60 4.8% 95.9%;
+  --secondary-foreground: 24 9.8% 10%;
+  --muted: 60 4.8% 95.9%;
+  --muted-foreground: 25 5.3% 44.7%;
+  --accent: 60 4.8% 95.9%;
+  --accent-foreground: 24 9.8% 10%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 60 9.1% 97.8%;
+  --border: 20 5.9% 90%;
+  --input: 20 5.9% 90%;
+  --ring: 24 9.8% 10%;
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: 20 14.3% 4.1%;
+  --foreground: 60 9.1% 97.8%;
+  --card: 20 14.3% 4.1%;
+  --card-foreground: 60 9.1% 97.8%;
+  --popover: 20 14.3% 4.1%;
+  --popover-foreground: 60 9.1% 97.8%;
+  --primary: 60 9.1% 97.8%;
+  --primary-foreground: 24 9.8% 10%;
+  --secondary: 12 6.5% 15.1%;
+  --secondary-foreground: 60 9.1% 97.8%;
+  --muted: 12 6.5% 15.1%;
+  --muted-foreground: 24 5.4% 63.9%;
+  --accent: 12 6.5% 15.1%;
+  --accent-foreground: 60 9.1% 97.8%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 60 9.1% 97.8%;
+  --border: 12 6.5% 15.1%;
+  --input: 12 6.5% 15.1%;
+  --ring: 24 5.7% 82.9%;
+}
+
+body {
+  @apply bg-background text-foreground;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+}
+
+/* Komplett neu gestalteter Slider mit perfekter Zentrierung */
+.slider-container {
+  position: relative;
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+.slider-track {
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  background-color: #e5e7eb;
+  border-radius: 2px;
+}
+
+.slider-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 10;
+  margin: 0;
+  padding: 0;
+}
+
+.slider-thumb {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #8d8178;
+  border: 2px solid white;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  pointer-events: none;
+  transform: translateX(-50%);
+  z-index: 5;
+  transition: transform 0.1s ease;
+}
+
+.slider-labels {
+  position: absolute;
+  top: 40px; /* Erhöht von 24px auf 40px, um die Labels deutlich unter den Slider zu verschieben */
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.slider-label {
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+/* Verbesserte Slider-Markierungen */
+.slider-markers {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+}
+
+.slider-marker {
+  width: 2px;
+  height: 8px;
+  background-color: #d1d5db;
+  transform: translateY(-2px);
+}
+
+.slider-marker.active {
+  background-color: #8d8178;
+}
+
+/* Animation für Fortschrittsbalken */
+@keyframes progress-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animated-progress {
+  background: linear-gradient(270deg, #8d8178, #a39990);
+  background-size: 200% 200%;
+  animation: progress-animation 2s ease infinite;
+}
+
+/* Spezifische Farben für Persönlichkeitstypen */
+.bg-sky-500 {
+  background-color: #0ea5e9;
+}
+
+.bg-amber-500 {
+  background-color: #f59e0b;
+}
+
+.bg-blue-500 {
+  background-color: #3b82f6;
+}
+
+.bg-green-500 {
+  background-color: #22c55e;
+}
+
+.bg-rose-500 {
+  background-color: #f43f5e;
+}
+
+.bg-indigo-500 {
+  background-color: #6366f1;
+}
+
+.bg-purple-500 {
+  background-color: #a855f7;
+}
+
+.bg-stone-500 {
+  background-color: #8d8178;
+}
+
+.bg-teal-500 {
+  background-color: #14b8a6;
+}
+
+.bg-red-500 {
+  background-color: #ef4444;
+}
+
+.bg-fuchsia-500 {
+  background-color: #d946ef;
+}
+
+.bg-orange-500 {
+  background-color: #f97316;
+}
+
+.bg-slate-500 {
+  background-color: #64748b;
+}
+
+.bg-emerald-500 {
+  background-color: #10b981;
+}
+
+.bg-yellow-500 {
+  background-color: #eab308;
+}
+
+/* Verbesserte Slider-Komponente */
+.slider-container.improved {
+  height: 60px;
+  margin-bottom: 20px;
+}
+
+.slider-click-area {
+  position: absolute;
+  top: -10px;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 5;
+}
+
+.slider-option-button {
+  flex: 1;
+  height: 100%;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.slider-thumb {
+  width: 24px;
+  height: 24px;
+}
+
+.slider-input {
+  height: 44px;
+  cursor: pointer;
+}
+
+.slider-markers {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+}
+
+.slider-marker {
+  width: 2px;
+  height: 10px;
+  background-color: #d1d5db;
+  transform: translateY(-3px);
+}
+
+/* Verhindert unbeabsichtigtes Scrollen beim Slider-Interaktion auf Mobilgeräten */
+.slider-container.improved {
+  touch-action: none;
+}
+
+/* Mapbox-Stile */
+.mapboxgl-popup-content {
+  padding: 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.mapboxgl-popup-close-button {
+  padding: 4px 8px;
+  font-size: 16px;
+  color: #666;
+}
+
+.mapboxgl-popup-close-button:hover {
+  color: #000;
+  background: none;
+}
+
+.mapbox-popup {
+  max-width: 300px;
+}
